@@ -244,7 +244,7 @@ I'm always open to discussing new projects, opportunities, or just having a tech
 
 📧 **Email:** [ardli.firdaus@gmail.com](mailto:ardli.firdaus@gmail.com)  
 🌐 **Portfolio:** [ardlifirdaus.github.io/profile](https://ardlifirdaus.github.io/profile)  
-💼 **LinkedIn:** Connect with me on LinkedIn  
+💼 **LinkedIn:** Connect with me on [LinkedIn](https://www.linkedin.com/in/ardli-firdlaus/)  
 📍 **Location:** Kranji, Bekasi Barat, Indonesia
 
 </div>
