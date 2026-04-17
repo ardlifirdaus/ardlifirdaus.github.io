@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ardli Firdaus – Professional Profile</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/9.1.6/marked.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <style>
+    :root {
+      --bg:           #0d1117;
+      --bg2:          #161b22;
+      --bg3:          #1c2128;
+      --border:       #30363d;
+      --border-soft:  #21262d;
+      --text:         #e6edf3;
+      --text2:        #8b949e;
+      --text3:        #6e7681;
+      --blue:         #58a6ff;
+      --green:        #3fb950;
+      --cyan:         #39c5cf;
+      --purple:       #bc8cff;
+      --orange:       #d29922;
+      --red:          #f85149;
+      --sans:         'DM Sans', sans-serif;
+      --display:      'Syne', sans-serif;
+      --mono:         'JetBrains Mono', monospace;
+      --radius:       10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient glow background */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 15% 5%,  rgba(88,166,255,.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 85% 90%, rgba(63,185,80,.05)  0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Layout ─────────────────────────────────── */
+    #app {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 24px 96px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Loading ─────────────────────────────────── */
+    #loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      min-height: 60vh;
+      color: var(--text2);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .spinner {
+      width: 32px; height: 32px;
+      border: 2px solid var(--border);
+      border-top-color: var(--blue);
+      border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Markdown body ───────────────────────────── */
+    .md {
+      animation: fadeUp .5s ease both;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Headings */
+    .md h1, .md h2, .md h3, .md h4 {
+      font-family: var(--display);
+      font-weight: 700;
+      line-height: 1.3;
+      letter-spacing: -.3px;
+      color: var(--text);
+      margin-top: 40px;
+      margin-bottom: 14px;
+    }
+    .md h1 { font-size: 26px; font-weight: 800; margin-top: 0; }
+    .md h2 {
+      font-size: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .md h3 { font-size: 16px; color: var(--blue); }
+    .md h4 { font-size: 14px; color: var(--text2); text-transform: uppercase; letter-spacing: .8px; }
+
+    /* Paragraphs */
+    .md p { margin-bottom: 14px; color: var(--text); }
+
+    /* Links */
+    .md a { color: var(--blue); text-decoration: none; transition: opacity .15s; }
+    .md a:hover { opacity: .75; text-decoration: underline; }
+
+    /* Horizontal rule */
+    .md hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 32px 0;
+    }
+
+    /* Emphasis */
+    .md strong { color: var(--text); font-weight: 600; }
+    .md em { color: var(--text2); font-style: italic; }
+
+    /* Lists */
+    .md ul, .md ol {
+      padding-left: 24px;
+      margin-bottom: 14px;
+    }
+    .md li { margin-bottom: 4px; }
+    .md li::marker { color: var(--text3); }
+
+    /* Inline code */
+    .md code {
+      font-family: var(--mono);
+      font-size: .84em;
+      background: var(--bg2);
+      border: 1px solid var(--border-soft);
+      color: var(--cyan);
+      padding: 1px 6px;
+      border-radius: 4px;
+    }
+
+    /* Code blocks */
+    .md pre {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .md pre code {
+      background: none;
+      border: none;
+      padding: 0;
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    /* Tables */
+    .md table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+    .md thead th {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: var(--text2);
+      background: var(--bg2);
+      padding: 10px 14px;
+      border: 1px solid var(--border);
+      text-align: left;
+    }
+    .md tbody td {
+      padding: 10px 14px;
+      border: 1px solid var(--border-soft);
+      vertical-align: top;
+    }
+    .md tbody tr:nth-child(even) { background: rgba(255,255,255,.02); }
+    .md tbody tr:hover { background: var(--bg3); }
+
+    /* Images (badges) */
+    .md img {
+      max-width: 100%;
+      vertical-align: middle;
+      margin: 2px 3px;
+    }
+
+    /* Blockquotes */
+    .md blockquote {
+      border-left: 3px solid var(--blue);
+      padding: 12px 20px;
+      margin: 0 0 20px;
+      background: rgba(88,166,255,.05);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--text2);
+      font-style: italic;
+    }
+
+    /* Details / Summary */
+    .md details {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .md summary {
+      padding: 14px 18px;
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--blue);
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background .15s;
+    }
+    .md summary:hover { background: var(--bg3); }
+    .md summary::before {
+      content: '▶';
+      font-size: 10px;
+      transition: transform .2s;
+    }
+    .md details[open] summary::before { transform: rotate(90deg); }
+    .md details > *:not(summary) {
+      padding: 0 18px 18px;
+    }
+
+    /* Center-aligned divs */
+    .md div[align="center"] {
+      text-align: center;
+    }
+
+    /* ── Mermaid wrapper ─────────────────────────── */
+    .mermaid-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+    }
+    .mermaid-wrap .mermaid { display: flex; justify-content: center; }
+
+    /* ── Top card (header area) ──────────────────── */
+    .profile-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px 32px 28px;
+      margin-bottom: 32px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--cyan), var(--green));
+    }
+    .profile-card h1 {
+      font-family: var(--display);
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -.5px;
+      margin-bottom: 18px;
+    }
+    .profile-card .badges { margin-bottom: 14px; }
+    .profile-card .quote {
+      font-style: italic;
+      color: var(--text2);
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    /* ── Section card wrapper ────────────────────── */
+    .section-wrap {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 28px 20px;
+      margin-bottom: 20px;
+    }
+    .section-wrap > h2:first-child,
+    .section-wrap > h3:first-child {
+      margin-top: 0;
+    }
+
+    /* ── Footer ──────────────────────────────────── */
+    .footer {
+      text-align: center;
+      margin-top: 56px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      color: var(--text3);
+      font-size: 12px;
+      font-family: var(--mono);
+    }
+    .footer a { color: var(--text2); }
+
+    /* ── Responsive ──────────────────────────────── */
+    @media (max-width: 600px) {
+      #app { padding: 24px 16px 64px; }
+      .profile-card { padding: 24px 18px 20px; }
+      .section-wrap { padding: 20px 18px 14px; }
+      .md h1 { font-size: 22px; }
+      .md h2 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <div id="loading">
+    <div class="spinner"></div>
+    <span>Loading profile…</span>
+  </div>
+  <div id="content" style="display:none"></div>
+</div>
+
+<script>
+  // ── Mermaid config ──────────────────────────────
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'dark',
+    darkMode: true,
+    themeVariables: {
+      background:      '#161b22',
+      primaryColor:    '#1c2128',
+      primaryTextColor:'#e6edf3',
+      primaryBorderColor:'#30363d',
+      lineColor:       '#58a6ff',
+      secondaryColor:  '#21262d',
+      tertiaryColor:   '#0d1117',
+      edgeLabelBackground:'#161b22',
+      fontFamily:      'DM Sans, sans-serif',
+    },
+    timeline: { useMaxWidth: true },
+  });
+
+  // ── Marked config ───────────────────────────────
+  const renderer = new marked.Renderer();
+
+  // Intercept fenced code blocks: extract mermaid
+  renderer.code = function(code, lang) {
+    if (lang === 'mermaid') {
+      return `<div class="mermaid-wrap"><div class="mermaid">${code}</div></div>`;
+    }
+    // Plain text progress bars (skill bars in README)
+    if (!lang || lang === '') {
+      const escaped = code
+        .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+      return `<pre><code>${escaped}</code></pre>`;
+    }
+    const escaped = code
+      .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    return `<pre><code class="language-${lang}">${escaped}</code></pre>`;
+  };
+
+  marked.setOptions({
+    renderer,
+    gfm: true,
+    breaks: false,
+    pedantic: false,
+    sanitize: false,   // allow raw HTML (<div align="center">, <table>, <details>)
+    smartypants: false,
+  });
+
+  // ── Fetch & render README ───────────────────────
+  async function loadReadme() {
+    let mdText = '';
+    try {
+      const res = await fetch('./README.md');
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      mdText = await res.text();
+    } catch (e) {
+      document.getElementById('loading').innerHTML =
+        `<p style="color:var(--red);font-family:var(--mono);font-size:13px">
+          ⚠ Could not load README.md<br><small>${e.message}</small>
+         </p>`;
+      return;
+    }
+
+    // ── Pre-process: split README into header block + body ──
+    const lines = mdText.split('\n');
+
+    // Find the h1 line
+    const h1Idx = lines.findIndex(l => l.startsWith('# '));
+
+    // Find the first <div align="center"> block (badges + quote) and extract it
+    // We'll render the top section manually as a styled card
+    let headerMd = '';
+    let bodyStart = 0;
+
+    if (h1Idx !== -1) {
+      // Grab everything up to (and including) the first <hr> or empty section after header
+      let endOfHeader = lines.findIndex((l, i) => i > h1Idx && l.trim() === '---');
+      if (endOfHeader === -1) endOfHeader = h1Idx + 20;
+      headerMd = lines.slice(h1Idx, endOfHeader + 1).join('\n');
+      bodyStart = endOfHeader + 1;
+    }
+
+    const bodyMd = lines.slice(bodyStart).join('\n');
+
+    // Render header card
+    const headerHtml = marked.parse(headerMd);
+    const bodyHtml   = marked.parse(bodyMd);
+
+    // ── Build DOM ────────────────────────────────
+    const content = document.getElementById('content');
+    content.innerHTML = `
+      <div class="profile-card">
+        <div class="md">${headerHtml}</div>
+      </div>
+      <div class="md body-md">${bodyHtml}</div>
+      <div class="footer">
+        Rendered from <a href="./README.md">README.md</a> ·
+        <a href="https://ardlifirdaus.github.io/profile">View Full Profile →</a>
+      </div>
+    `;
+
+    // Remove duplicate h1 that might appear inside .profile-card if already in header
+    // (the <div align="center"> wrapper often has the h1 inside it)
+    const dupeH1s = content.querySelectorAll('.profile-card .md h1');
+    if (dupeH1s.length > 1) dupeH1s[0].remove();
+
+    // Wrap each h2-section in body with a styled card
+    wrapSections(content.querySelector('.body-md'));
+
+    // Show content
+    document.getElementById('loading').style.display = 'none';
+    content.style.display = 'block';
+
+    // Render mermaid diagrams
+    try {
+      await mermaid.run({ nodes: document.querySelectorAll('.mermaid') });
+    } catch(e) { console.warn('Mermaid render error:', e); }
+  }
+
+  // ── Wrap h2 sections in cards ────────────────────
+  function wrapSections(container) {
+    if (!container) return;
+    const children = Array.from(container.childNodes);
+    const sections = [];
+    let current = null;
+
+    children.forEach(node => {
+      if (node.nodeType === 1 && node.tagName === 'H2') {
+        if (current) sections.push(current);
+        current = { heading: node, nodes: [] };
+      } else if (current) {
+        current.nodes.push(node);
+      } else {
+        sections.push({ heading: null, nodes: [node] });
+      }
+    });
+    if (current) sections.push(current);
+
+    // Clear container
+    container.innerHTML = '';
+
+    sections.forEach(sec => {
+      if (!sec.heading && sec.nodes.every(n =>
+        n.nodeType === 3 && n.textContent.trim() === '')) return;
+
+      const wrap = document.createElement('div');
+      wrap.className = 'section-wrap';
+      if (sec.heading) wrap.appendChild(sec.heading.cloneNode(true));
+      sec.nodes.forEach(n => wrap.appendChild(n.cloneNode(true)));
+      container.appendChild(wrap);
+    });
+  }
+
+  loadReadme();
+</script>
+</body>
+</html>
