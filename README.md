@@ -18,7 +18,7 @@
 
 ## 🚀 About This Project
 
-This is my professional online profile website, showcasing my journey as an **Application Support Specialist** with extensive experience in healthcare and ERP systems. Built with modern web technologies, this responsive website presents my career path, technical skills, and professional achievements in an elegant and interactive format.
+This is my professional online portfolio website, highlighting my experience as an Application Support Specialist at Pajak.io. I specialize in efficiently resolving user complaints, supporting seamless system integrations, and building interactive dashboards to empower commercial teams. Developed with modern web technologies, this responsive platform reflects my strong technical skills, analytical thinking, and commitment to delivering high-quality support solutions.
 
 **🔗 Live Demo:** [ardlifirdaus.github.io/profile](https://ardlifirdaus.github.io/profile)
 
@@ -260,12 +260,6 @@ While this is a personal profile website, suggestions and feedback are always we
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
----
-
-## 📝 License
-
-This project is open source and available under the MIT License.
 
 ---
 
