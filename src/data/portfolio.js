@@ -1,8 +1,8 @@
 export const meta = {
   name: 'Ardli Firdlaus',
   role: {
-    en: 'Application Support Engineer',
-    id: 'Application Support Engineer',
+    en: 'Unique AI Prompter',
+    id: 'Unique AI Prompter',
   },
   tagline: {
     en: '10+ years. Multiple systems. One goal: make it work.',
