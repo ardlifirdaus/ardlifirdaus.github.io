@@ -1,0 +1,120 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  position: relative;
+  padding-left: var(--space-8);
+}
+
+.list::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  bottom: 8px;
+  width: 1px;
+  background: var(--clr-border);
+}
+
+.entry {
+  position: relative;
+  display: flex;
+  gap: var(--space-6);
+}
+
+.dot {
+  position: absolute;
+  left: calc(-1 * var(--space-8) - 4px);
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  background: var(--clr-accent-dim);
+  border: 1px solid var(--clr-accent);
+  flex-shrink: 0;
+}
+
+.entryContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.role {
+  font-family: var(--font-mono);
+  font-size: var(--fs-md);
+  font-weight: 600;
+  color: var(--clr-text);
+}
+
+.currentBadge {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-xs);
+  color: var(--clr-accent);
+  border: 1px solid var(--clr-accent);
+  padding: 2px 6px;
+  animation: blink 1.5s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.company {
+  font-family: var(--font-mono);
+  font-size: var(--fs-base);
+  color: var(--clr-accent);
+  transition: opacity 0.2s;
+}
+
+.company:hover { opacity: 0.75; }
+
+.arrow {
+  font-size: var(--fs-sm);
+  opacity: 0.7;
+}
+
+.period {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-muted);
+}
+
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.bullet {
+  display: flex;
+  gap: var(--space-4);
+  font-family: var(--font-mono);
+  font-size: var(--fs-base);
+  color: var(--clr-text-muted);
+  line-height: var(--lh-normal);
+}
+
+.prefix {
+  color: var(--clr-accent-dim);
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .list {
+    padding-left: var(--space-6);
+  }
+  .dot {
+    left: calc(-1 * var(--space-6) - 4px);
+  }
+}

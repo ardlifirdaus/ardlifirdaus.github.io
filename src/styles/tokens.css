@@ -1,0 +1,41 @@
+:root {
+  --clr-bg:          #080808;
+  --clr-surface:     #111111;
+  --clr-surface-2:   #1A1A1A;
+
+  --clr-text:        #E8E8E8;
+  --clr-text-muted:  #666666;
+  --clr-text-dim:    #2E2E2E;
+
+  --clr-accent:      #39FF14;
+  --clr-accent-dim:  #1A5C07;
+
+  --clr-border:      #1F1F1F;
+  --clr-scanline:    rgba(255, 255, 255, 0.018);
+
+  --font-pixel: 'Press Start 2P', monospace;
+  --font-mono:  'IBM Plex Mono', monospace;
+
+  --fs-xs:    0.625rem;
+  --fs-sm:    0.75rem;
+  --fs-base:  0.875rem;
+  --fs-md:    1rem;
+  --fs-lg:    1.25rem;
+  --fs-xl:    1.5rem;
+  --fs-2xl:   2rem;
+  --fs-3xl:   3rem;
+  --fs-hero:  clamp(2rem, 6vw, 5rem);
+
+  --lh-tight:   1.2;
+  --lh-normal:  1.6;
+  --lh-relaxed: 1.8;
+
+  --space-2:  0.5rem;
+  --space-4:  1rem;
+  --space-6:  1.5rem;
+  --space-8:  2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-24: 6rem;
+  --section-gap: clamp(5rem, 15vh, 10rem);
+}

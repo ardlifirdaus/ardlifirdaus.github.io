@@ -1,0 +1,24 @@
+.wrapper {
+  font-family: var(--font-pixel);
+  font-size: var(--fs-xs);
+  color: var(--clr-accent);
+  letter-spacing: 0.1em;
+  margin-bottom: var(--space-8);
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.char {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0s;
+}
+
+.wrapper.visible .char {
+  animation: charIn 0.06s ease forwards;
+  animation-delay: calc(var(--i) * 0.06s);
+}
+
+@keyframes charIn {
+  to { opacity: 1; }
+}
