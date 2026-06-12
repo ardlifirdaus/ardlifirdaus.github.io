@@ -10,15 +10,16 @@ const uniqueCompanies = [...new Set(experience.map(e => e.company))].length
 
 export default function Hero() {
   const { lang } = useLang()
-  const nameRef = useRef(null)
-  const yearsRef = useRef(null)
+  const firstNameRef = useRef(null)
+  const lastNameRef = useRef(null)
   const companiesRef = useRef(null)
   const buildsRef = useRef(null)
 
   useGSAP(() => {
-    if (!nameRef.current) return
-    const split = new SplitType(nameRef.current, { types: 'chars' })
-    gsap.from(split.chars, {
+    if (!firstNameRef.current || !lastNameRef.current) return
+    const splitFirst = new SplitType(firstNameRef.current, { types: 'chars' })
+    const splitLast = new SplitType(lastNameRef.current, { types: 'chars' })
+    gsap.from([...splitFirst.chars, ...splitLast.chars], {
       opacity: 0,
       y: 20,
       stagger: 0.04,
@@ -26,7 +27,7 @@ export default function Hero() {
       ease: 'power2.out',
       delay: 0.3,
     })
-    return () => split.revert()
+    return () => { splitFirst.revert(); splitLast.revert() }
   }, [])
 
   useGSAP(() => {
@@ -53,7 +54,10 @@ export default function Hero() {
         <div className={styles.cursor}>
           <span className={styles.cursorBlink}>&gt;_</span>
         </div>
-        <h1 ref={nameRef} className={styles.name}>{meta.name.toUpperCase()}</h1>
+        <h1 className={styles.name}>
+          <span ref={firstNameRef} className={styles.nameLine}>ARDLI</span>
+          <span ref={lastNameRef} className={styles.nameLine}>FIRDLAUS</span>
+        </h1>
         <p className={styles.role}>{meta.role[lang].toUpperCase()}</p>
         <p className={styles.tagline}>&ldquo;{meta.tagline[lang]}&rdquo;</p>
 
