@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { LangProvider } from './context/LangContext'
 import Loader from './components/Loader'
 import Nav from './components/Nav'
@@ -29,9 +29,10 @@ function MainLayout() {
 
 export default function App() {
   const [loaded, setLoaded] = useState(false)
+  const handleLoaded = useCallback(() => setLoaded(true), [])
   return (
     <LangProvider>
-      {loaded ? <MainLayout /> : <Loader onComplete={() => setLoaded(true)} />}
+      {loaded ? <MainLayout /> : <Loader onComplete={handleLoaded} />}
     </LangProvider>
   )
 }

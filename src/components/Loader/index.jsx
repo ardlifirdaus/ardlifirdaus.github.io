@@ -10,12 +10,14 @@ export default function Loader({ onComplete }) {
   const wrapperRef = useRef(null)
 
   useEffect(() => {
+    const onDone = onComplete
     const tl = gsap.timeline({
       onComplete: () => {
+        if (!wrapperRef.current) return
         gsap.to(wrapperRef.current, {
           opacity: 0,
           duration: 0.4,
-          onComplete,
+          onComplete: onDone,
         })
       },
     })
@@ -31,7 +33,9 @@ export default function Loader({ onComplete }) {
         if (percentRef.current) percentRef.current.textContent = v + '%'
       },
     })
-  }, [onComplete])
+
+    return () => { tl.kill(); gsap.killTweensOf(wrapperRef.current) }
+  }, [])
 
   return (
     <div ref={wrapperRef} className={styles.loader}>
