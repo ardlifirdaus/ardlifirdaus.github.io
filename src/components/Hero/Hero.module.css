@@ -37,7 +37,7 @@
 
 .name {
   font-family: var(--font-pixel);
-  font-size: var(--fs-hero);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   color: var(--clr-text);
   line-height: var(--lh-tight);
   letter-spacing: -0.02em;
@@ -45,6 +45,7 @@
 
 .nameLine {
   display: block;
+  white-space: nowrap;
 }
 
 .role {
