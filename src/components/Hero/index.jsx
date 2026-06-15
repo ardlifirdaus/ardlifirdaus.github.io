@@ -12,6 +12,7 @@ export default function Hero() {
   const { lang } = useLang()
   const firstNameRef = useRef(null)
   const lastNameRef = useRef(null)
+  const yearsRef = useRef(null)
   const companiesRef = useRef(null)
   const buildsRef = useRef(null)
 
@@ -31,7 +32,7 @@ export default function Hero() {
   }, [])
 
   useGSAP(() => {
-    const animate = (ref, target) => {
+    const animate = (ref, target, suffix = '') => {
       const obj = { val: 0 }
       gsap.to(obj, {
         val: target,
@@ -40,10 +41,11 @@ export default function Hero() {
         ease: 'power1.inOut',
         delay: 0.8,
         onUpdate: () => {
-          if (ref.current) ref.current.textContent = Math.round(obj.val)
+          if (ref.current) ref.current.textContent = Math.round(obj.val) + suffix
         },
       })
     }
+    animate(yearsRef, 10, '+')
     animate(companiesRef, uniqueCompanies)
     animate(buildsRef, personalProjects.length)
   }, [])
@@ -63,7 +65,7 @@ export default function Hero() {
 
         <div className={styles.stats}>
           <div className={styles.stat}>
-            <span className={styles.statNum}>10+</span>
+            <span className={styles.statNum} ref={yearsRef}>0+</span>
             <span className={styles.statLabel}>YEARS EXP</span>
           </div>
           <div className={styles.stat}>
