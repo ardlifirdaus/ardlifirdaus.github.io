@@ -4,6 +4,7 @@ import { gsap } from 'gsap'
 import SectionSlug from '../SectionSlug'
 import { useLang } from '../../context/LangContext'
 import { meta } from '../../data/portfolio'
+import { PIXEL_ICONS } from '../PixelIcons/PixelIcons'
 import styles from './Connect.module.css'
 
 const closing = {
@@ -12,11 +13,11 @@ const closing = {
 }
 
 const links = [
-  { label: 'LINKEDIN', key: 'linkedin', display: 'linkedin.com/in/ardli-firdlaus' },
-  { label: 'GITHUB',   key: 'github',   display: 'github.com/ardlifirdaus' },
-  { label: 'TELEGRAM', key: 'telegram', display: 't.me/arka51' },
-  { label: 'EMAIL',    key: 'email',    display: 'ardli.firdaus@gmail.com' },
-  { label: 'CV / RESUME', key: 'cv',   display: 'Google Drive' },
+  { label: 'LINKEDIN',    key: 'linkedin', iconKey: 'linkedin', display: 'linkedin.com/in/ardli-firdlaus' },
+  { label: 'GITHUB',      key: 'github',   iconKey: 'github',   display: 'github.com/ardlifirdaus' },
+  { label: 'TELEGRAM',    key: 'telegram', iconKey: 'telegram', display: 't.me/arka51' },
+  { label: 'EMAIL',       key: 'email',    iconKey: 'email',    display: 'ardli.firdaus@gmail.com' },
+  { label: 'CV / RESUME', key: 'cv',       iconKey: 'pdf',      display: 'Google Drive' },
 ]
 
 export default function Connect() {
@@ -46,18 +47,22 @@ export default function Connect() {
       <p className={styles.closing}>&ldquo;{closing[lang]}&rdquo;</p>
 
       <div ref={linksRef} className={styles.links}>
-        {links.map((l) => (
-          <a
-            key={l.key}
-            href={getHref(l.key)}
-            target={l.key !== 'email' ? '_blank' : undefined}
-            rel={l.key !== 'email' ? 'noopener noreferrer' : undefined}
-            className={styles.linkItem}
-          >
-            <span className={styles.linkLabel}>[ {l.label} ↗ ]</span>
-            <span className={styles.linkDisplay}>{l.display}</span>
-          </a>
-        ))}
+        {links.map((l) => {
+          const Icon = PIXEL_ICONS[l.iconKey]
+          return (
+            <a
+              key={l.key}
+              href={getHref(l.key)}
+              target={l.key !== 'email' ? '_blank' : undefined}
+              rel={l.key !== 'email' ? 'noopener noreferrer' : undefined}
+              className={styles.linkItem}
+            >
+              <Icon size={24} className={styles.icon} />
+              <span className={styles.linkLabel}>[ {l.label} ↗ ]</span>
+              <span className={styles.linkDisplay}>{l.display}</span>
+            </a>
+          )
+        })}
       </div>
 
       <footer className={styles.footer}>

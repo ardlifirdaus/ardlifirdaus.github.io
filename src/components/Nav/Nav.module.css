@@ -115,6 +115,7 @@
 .hamburgerOpen span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobileLang { display: none; }
+.closeBtn { display: none; }
 
 @media (max-width: 768px) {
   .hamburger { display: flex; }
@@ -139,4 +140,28 @@
 
   .mobileLang { display: block; }
   .right .langToggle { display: none; }
+
+  .closeBtn {
+    display: block;
+    position: absolute;
+    top: var(--space-4);
+    right: var(--space-8);
+  }
+
+  .closeBtn button {
+    font-family: var(--font-pixel);
+    font-size: var(--fs-xs);
+    background: none;
+    border: 1px solid var(--clr-border);
+    color: var(--clr-text-muted);
+    padding: var(--space-2) var(--space-4);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .closeBtn button:hover {
+    color: var(--clr-accent);
+    border-color: var(--clr-accent-dim);
+  }
 }

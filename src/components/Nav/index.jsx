@@ -43,6 +43,11 @@ export default function Nav() {
       </a>
 
       <ul className={`${styles.links} ${menuOpen ? styles.open : ''}`}>
+        <li className={styles.closeBtn}>
+          <button onClick={() => setMenuOpen(false)} aria-label="Close menu">
+            [ X ]
+          </button>
+        </li>
         {NAV_LINKS.map(l => (
           <li key={l.id}>
             <button

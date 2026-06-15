@@ -16,8 +16,8 @@
 
 .linkItem {
   display: flex;
-  align-items: baseline;
-  gap: var(--space-6);
+  align-items: center;
+  gap: var(--space-4);
   padding: var(--space-4) 0;
   border-bottom: 1px solid var(--clr-border);
   transition: border-color 0.2s;
@@ -26,6 +26,15 @@
 
 .linkItem:hover {
   border-color: var(--clr-accent-dim);
+}
+
+.icon {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.linkItem:hover .icon {
+  opacity: 1;
 }
 
 .linkLabel {
