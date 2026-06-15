@@ -271,6 +271,16 @@ export const personalProjects = [
     },
     url: 'https://indah-weddings-gallery.netlify.app/',
   },
+  {
+    id: '04',
+    title: 'SILSILAH KELUARGA',
+    tech: ['Google Apps Script', 'Google Sheets', 'Web App'],
+    description: {
+      en: 'Family tree recording app built on Google Apps Script. Supports multiple marriages per person, multiple divorces, and multi-generational lineage tracking.',
+      id: 'Aplikasi pencatatan pohon keluarga berbasis Google Apps Script. Mendukung input menikah lebih dari 1 kali, cerai, dan penelusuran silsilah multi generasi.',
+    },
+    url: 'https://script.google.com/macros/s/AKfycbz_L3RpT_Rzk_xVMKFE3k8ldw0YqVRXPVW3ICKMaN8_MtA7NFeDtB4W1S3owYR1rkkX-Q/exec',
+  },
 ]
 
 export const professionalProjects = [
