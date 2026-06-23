@@ -11,6 +11,12 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.card:hover {
+  border-color: var(--clr-accent-dim);
+  background: var(--clr-surface-2);
 }
 
 .cardHeader {
@@ -33,6 +39,11 @@
   color: var(--clr-text);
   letter-spacing: 0.05em;
   line-height: var(--lh-normal);
+  transition: color 0.2s;
+}
+
+.card:hover .cardTitle {
+  color: var(--clr-accent);
 }
 
 .items {
