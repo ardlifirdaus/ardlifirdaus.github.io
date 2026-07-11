@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: var(--space-6);
-  margin-bottom: var(--space-16);
+  margin-bottom: var(--space-6);
 }
 
 .card {
@@ -104,6 +104,43 @@
 .cta:hover {
   background: var(--clr-accent-dim);
   color: var(--clr-text);
+}
+
+.viewMoreBtn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-top: var(--space-2);
+  margin-bottom: var(--space-16);
+  font-family: var(--font-pixel);
+  font-size: var(--fs-xs);
+  color: var(--clr-text-muted);
+  background: none;
+  border: 1px solid var(--clr-border);
+  padding: var(--space-4) var(--space-6);
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.viewMoreBtn:hover {
+  border-color: var(--clr-accent-dim);
+  color: var(--clr-accent);
+}
+
+.viewMoreBtn:hover .btnPrefix {
+  color: var(--clr-accent);
+}
+
+.btnPrefix {
+  color: var(--clr-accent-dim);
+  transition: color 0.2s;
+}
+
+.btnCount {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  color: var(--clr-text-dim);
 }
 
 .proSection {

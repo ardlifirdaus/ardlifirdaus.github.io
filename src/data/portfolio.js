@@ -263,13 +263,13 @@ export const personalProjects = [
   },
   {
     id: '03',
-    title: 'INDAH WEDDINGS GALLERY',
-    tech: ['React.js', 'GSAP', 'ScrollTrigger', 'Lottie', 'Netlify'],
+    title: 'NETWORTH TRACKER',
+    tech: ['Google Sites', 'Google Sheets', 'Apps Script'],
     description: {
-      en: 'Company profile for a Jakarta-based wedding planner & MUA, featuring GSAP scroll animations and Lottie micro-interactions.',
-      id: 'Company profile untuk wedding planner & MUA Jakarta, dibangun dengan GSAP ScrollTrigger dan Lottie micro-interactions.',
+      en: 'More than just a money tracker — fully equipped with real-time US stock, IDX stock, and gold price sync in Rupiah. Try it for free.',
+      id: 'Bukan sekedar pencatat uang biasa — dilengkapi fitur sinkronisasi harga saham US, IDX, dan harga emas real time dalam rupiah. Coba gratis.',
     },
-    url: 'https://indah-weddings-gallery.netlify.app/',
+    url: 'https://sites.google.com/view/networth-tracker-2026',
   },
   {
     id: '04',
@@ -280,6 +280,16 @@ export const personalProjects = [
       id: 'Aplikasi pencatatan pohon keluarga berbasis Google Apps Script. Mendukung input menikah lebih dari 1 kali, cerai, dan penelusuran silsilah multi generasi.',
     },
     url: 'https://script.google.com/macros/s/AKfycbz_L3RpT_Rzk_xVMKFE3k8ldw0YqVRXPVW3ICKMaN8_MtA7NFeDtB4W1S3owYR1rkkX-Q/exec',
+  },
+  {
+    id: '05',
+    title: 'INDAH WEDDINGS GALLERY',
+    tech: ['React.js', 'GSAP', 'ScrollTrigger', 'Lottie', 'Netlify'],
+    description: {
+      en: 'Company profile for a Jakarta-based wedding planner & MUA, featuring GSAP scroll animations and Lottie micro-interactions.',
+      id: 'Company profile untuk wedding planner & MUA Jakarta, dibangun dengan GSAP ScrollTrigger dan Lottie micro-interactions.',
+    },
+    url: 'https://indah-weddings-gallery.netlify.app/',
   },
 ]
 

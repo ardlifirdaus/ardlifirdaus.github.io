@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import { gsap } from 'gsap'
 import SectionSlug from '../SectionSlug'
@@ -6,10 +6,15 @@ import { useLang } from '../../context/LangContext'
 import { personalProjects, professionalProjects } from '../../data/portfolio'
 import styles from './Builds.module.css'
 
+const INITIAL_COUNT = 4
+
 export default function Builds() {
   const { lang } = useLang()
   const cardsRef = useRef(null)
   const proListRef = useRef(null)
+  const [showAll, setShowAll] = useState(false)
+
+  const visible = showAll ? personalProjects : personalProjects.slice(0, INITIAL_COUNT)
 
   useGSAP(() => {
     if (cardsRef.current) {
@@ -34,12 +39,25 @@ export default function Builds() {
     }
   }, [])
 
+  useEffect(() => {
+    if (!showAll || !cardsRef.current) return
+    const newCards = Array.from(cardsRef.current.children).slice(INITIAL_COUNT)
+    if (newCards.length === 0) return
+    gsap.from(newCards, {
+      opacity: 0,
+      y: 30,
+      stagger: 0.1,
+      duration: 0.5,
+      ease: 'power2.out',
+    })
+  }, [showAll])
+
   return (
     <section id="builds" className="section">
       <SectionSlug slug="//builds" />
 
       <div ref={cardsRef} className={styles.cards}>
-        {personalProjects.map((proj) => (
+        {visible.map((proj) => (
           <div key={proj.id} className={styles.card}>
             <span className={styles.index}>[{proj.id}]</span>
             <h3
@@ -65,6 +83,19 @@ export default function Builds() {
           </div>
         ))}
       </div>
+
+      <button
+        className={styles.viewMoreBtn}
+        onClick={() => setShowAll(v => !v)}
+      >
+        <span className={styles.btnPrefix}>&gt;</span>
+        {showAll
+          ? (lang === 'en' ? 'SHOW LESS' : 'SEMBUNYIKAN')
+          : (lang === 'en' ? 'VIEW MORE' : 'LIHAT SEMUA')}
+        {!showAll && (
+          <span className={styles.btnCount}>+{personalProjects.length - INITIAL_COUNT}</span>
+        )}
+      </button>
 
       <div className={styles.proSection}>
         <h2 className={styles.proHeading}>PROFESSIONAL WORK</h2>
