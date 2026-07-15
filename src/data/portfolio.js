@@ -14,7 +14,7 @@ export const meta = {
     linkedin: 'https://www.linkedin.com/in/ardli-firdlaus/',
     github:   'https://github.com/ardlifirdaus',
     telegram: 'https://t.me/arka51',
-    cv:       'https://drive.google.com/file/d/1fUdqFRgPAP4VMwOADtGPTw9kHQk5Ui3l/view?usp=sharing',
+    cv:       'https://drive.google.com/file/d/1QtwvCKl2sSHPZj986aDT3nlQ7O7SGt4A/view?usp=sharing',
   },
   photo: '/assets/img/profile.jpg',
 }
