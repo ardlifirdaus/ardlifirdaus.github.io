@@ -243,7 +243,7 @@ export const skills = {
 export const personalProjects = [
   {
     id: '01',
-    title: 'INFOGRAFIS NIKAH',
+    title: 'INFOGRAFIS PESTA NIKAH',
     tech: ['HTML', 'CSS', 'JS', 'Web Audio'],
     description: {
       en: 'Financial literacy guide for young Indonesians planning marriage. Covers real data on wedding costs and their long-term financial impact — with interactive calculators.',
@@ -259,7 +259,7 @@ export const personalProjects = [
       en: 'Gas trade transaction recorder with real-time stock monitoring and gross/net margin dashboard.',
       id: 'Pencatat transaksi jual beli gas LPG dengan monitoring stok real-time dan dashboard gross/net margin.',
     },
-    url: 'https://gas-transact-pro.netlify.app/',
+    url: 'https://gas-cylinder-transactions-624576306621.asia-southeast1.run.app/',
   },
   {
     id: '03',
